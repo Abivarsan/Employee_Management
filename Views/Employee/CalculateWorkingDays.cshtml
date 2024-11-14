@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Calculate Working Days";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Calculate Working Days</h2>
+
+<form asp-action="CalculateWorkingDays" method="post" class="mt-4">
+    <div class="form-group">
+        <label for="StartDate">Start Date</label>
+        <input type="date" class="form-control" name="StartDate" required />
+    </div>
+    <div class="form-group">
+        <label for="EndDate">End Date</label>
+        <input type="date" class="form-control" name="EndDate" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Calculate</button>
+</form>
+
+@if (ViewBag.WorkingDays != null)
+{
+    <div class="mt-4 alert alert-info">
+        <strong>Number of Working Days:</strong> @ViewBag.WorkingDays
+    </div>
+}
+else if (ViewBag.Error != null)
+{
+    <div class="mt-4 alert alert-danger">
+        <strong>Error:</strong> @ViewBag.Error
+    </div>
+}
